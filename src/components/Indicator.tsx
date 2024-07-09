@@ -2,9 +2,9 @@ import Typography from '@mui/material/Typography';
 import Paper from '@mui/material/Paper';
 
 interface Config {
-    title?: String;
-    subtitle?: String;
-    value: Number;
+    title?: string;
+    subtitle?: string;
+    value: number;
 }
 
 export default function Indicator(config: Config) {
