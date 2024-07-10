@@ -69,7 +69,6 @@ function App() {
         dataToIndicators.push(["Location","Longitude", longitude])
 
         console.log( dataToIndicators )
-        
         let indicatorsElements = Array.from(dataToIndicators).map(
           (element) => <Indicator title={element[0]} subtitle={element[1]} value={element[2]} />
         ) 
@@ -163,10 +162,11 @@ function App() {
         <ControlPanel />
       </Grid>
 
+            
       <Grid xs={12} lg={10}>
         <WeatherChart></WeatherChart>
       </Grid>
-
+      
 	  </Grid>
   )
 }
