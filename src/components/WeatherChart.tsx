@@ -1,6 +1,5 @@
 import { Chart } from "react-google-charts";
-import Paper from '@mui/material/Paper';
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 export default function WeatherChart({ selectedDate }) {
 

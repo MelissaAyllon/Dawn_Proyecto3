@@ -5,11 +5,10 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
-import { useState, useRef, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
-export default function ControlPanel({ selectedDate, setSelectedDate }) {
-    let [selected, setSelected] = useState(-1);
-    const descriptionRef = useRef<HTMLDivElement>(null);
+export default function ControlPanel({ setSelectedDate }) {
+
     const [dias, setDias] = useState([]);
 
     useEffect(() => {

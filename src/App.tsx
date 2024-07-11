@@ -127,7 +127,7 @@ function App() {
             <BasicTable rows={rowsTable} />
 
             <Grid xs={12} lg={2}>
-                <ControlPanel selectedDate={selectedDate} setSelectedDate={setSelectedDate} />
+                <ControlPanel setSelectedDate={setSelectedDate} />
             </Grid>
 
             <Grid xs={12} lg={10}>
