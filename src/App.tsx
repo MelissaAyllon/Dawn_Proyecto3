@@ -58,7 +58,7 @@ function App() {
 
             //Obtener la fecha actual
             const forecastNodes = xml.getElementsByTagName('time');
-            const date_hoy = forecastNodes[8].getAttribute('from').split("T")[0];
+            const date_hoy = forecastNodes[0].getAttribute('from').split("T")[0];
             setSelectedDate(date_hoy);
 
             setIndicators(indicatorsElements);
