@@ -55,6 +55,12 @@ function App() {
             let indicatorsElements = Array.from(dataToIndicators).map(
                 (element) => <Indicator title={element[0]} subtitle={element[1]} value={element[2]} />
             );
+
+            //Obtener la fecha actual
+            const forecastNodes = xml.getElementsByTagName('time');
+            const date_hoy = forecastNodes[8].getAttribute('from').split("T")[0];
+            setSelectedDate(date_hoy);
+
             setIndicators(indicatorsElements);
 
             let arrayObjects = Array.from(xml.getElementsByTagName("time")).map((timeElement) => {

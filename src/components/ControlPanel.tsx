@@ -14,12 +14,12 @@ export default function ControlPanel({ setSelectedDate }) {
     useEffect(() => {
         const fetchdata = async () => {
             try {
-                let API_KEY = "99c0885b0db68333a6d8ca4b5ef6a7ae";
+                const API_KEY = "99c0885b0db68333a6d8ca4b5ef6a7ae";
                 const response = await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=Guayaquil&mode=xml&appid=${API_KEY}`);
                 const text = await response.text();
                 const parser = new DOMParser();
                 const xmlDoc = parser.parseFromString(text, "text/xml");
-                var dias = [];
+                const dias: string[] = [];
                 const forecastNodes = xmlDoc.getElementsByTagName('time');
                 
                 for (let i = 0; i < forecastNodes.length; i++) {
@@ -43,7 +43,7 @@ export default function ControlPanel({ setSelectedDate }) {
         setSelectedDate(event.target.value);
     };
 
-    let optiones2 = dias.map((item, key) => <MenuItem key={key} value={item}>{item}</MenuItem>);
+    const optiones2 = dias.map((item, key) => <MenuItem key={key} value={item}>{item}</MenuItem>);
 
     return (
         <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
@@ -57,7 +57,7 @@ export default function ControlPanel({ setSelectedDate }) {
                         labelId="simple-select-label"
                         id="simple-select"
                         label="Variables"
-                        defaultValue=''
+                        defaultValue=""
                         onChange={handleChange}
                     >
                         <MenuItem key="-1" value="" disabled>Seleccione un día</MenuItem>
