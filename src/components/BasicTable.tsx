@@ -51,6 +51,9 @@ function createData(
             <TableRow>
               <TableCell>Rango de horas</TableCell>
              <TableCell align="right">Dirección del viento</TableCell>
+             <TableCell align="right">Sensación térmica</TableCell>
+             <TableCell align="right">Humedad</TableCell>
+             <TableCell align="right">Probabilidad de precipitación</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -59,10 +62,11 @@ function createData(
                      key={row.rangeHours}
                      sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                  >
-                     <TableCell component="th" scope="row">
-                         {row.rangeHours}
-                     </TableCell>
+                     <TableCell component="th" scope="row">{row.rangeHours}</TableCell>
                      <TableCell align="right">{row.windDirection}</TableCell>
+                     <TableCell align="right">{row.feelsLike}</TableCell>
+                     <TableCell align="right">{row.humidity}</TableCell>
+                     <TableCell align="right">{row.precipitation}</TableCell>
                  </TableRow>
              ))}
           </TableBody>
