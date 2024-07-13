@@ -15,7 +15,7 @@ function App() {
 
     useEffect(() => {
         (async () => {
-            let savedTextXML: (string)= localStorage.getItem("openWeatherMap");
+            let savedTextXML: (string)= localStorage.getItem("openWeatherMap") ?? "";
             const expiringTime = localStorage.getItem("expiringTime");
 
             const nowTime = (new Date()).getTime();
@@ -65,16 +65,16 @@ function App() {
 
 
             let arrayObjects = Array.from(xml.getElementsByTagName("time")).map((timeElement) => {
-                let rangeHours = timeElement.getAttribute("from").split("T")[1] + " - " + timeElement.getAttribute("to").split("T")[1];
+                const rangeHours = timeElement.getAttribute("from").split("T")[1] + " - " + timeElement.getAttribute("to").split("T")[1];
 
-                let windDirection = timeElement.getElementsByTagName("windDirection")[0].getAttribute("deg") + " " + timeElement.getElementsByTagName("windDirection")[0].getAttribute("code");
+                const windDirection = timeElement.getElementsByTagName("windDirection")[0].getAttribute("deg") + " " + timeElement.getElementsByTagName("windDirection")[0].getAttribute("code");
                 
                 const kelvinToCelsius = (kelvin) => kelvin - 273.15;
-                let feelsLike = kelvinToCelsius(timeElement.getElementsByTagName("feels_like")[0].getAttribute("value")).toFixed(2) + "°C";
+                const feelsLike = kelvinToCelsius(timeElement.getElementsByTagName("feels_like")[0].getAttribute("value")).toFixed(2) + "°C";
 
-                let humedad = timeElement.getElementsByTagName("humidity")[0].getAttribute("value") + "%";
+                const humedad = timeElement.getElementsByTagName("humidity")[0].getAttribute("value") + "%";
                 
-                let precipitation = (parseFloat(timeElement.getElementsByTagName("precipitation")[0].getAttribute("probability")) * 100).toFixed(2) + "%";
+                const precipitation = (parseFloat(timeElement.getElementsByTagName("precipitation")[0].getAttribute("probability")) * 100).toFixed(2) + "%";
                 
                 return { "rangeHours": rangeHours, "windDirection": windDirection, "feelsLike": feelsLike, "humidity": humedad, "precipitation": precipitation};
             });

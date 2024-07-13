@@ -32,7 +32,7 @@ function createData(
   }
   
   export default function BasicTable(data:Config) {
-    let [rows, setRows] = useState([])
+    const [rows, setRows] = useState([])
 
     useEffect( () => {
 

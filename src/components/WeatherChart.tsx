@@ -8,14 +8,14 @@ export default function WeatherChart({ selectedDate }) {
 
     const fetchData = async () => {
         try {
-            let API_KEY = "99c0885b0db68333a6d8ca4b5ef6a7ae";
+            const API_KEY = "99c0885b0db68333a6d8ca4b5ef6a7ae";
             const response = await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=Guayaquil&mode=xml&appid=${API_KEY}`);
             const text = await response.text();
             const parser = new DOMParser();
             const xmlDoc = parser.parseFromString(text, "text/xml");
 
             const forecastNodes = xmlDoc.getElementsByTagName('time');
-            let data: (string | number)[][] = [['Time', 'Temperature (°C)', 'Humidity (%)']];
+            const data: (string | number)[][] = [['Time', 'Temperature (°C)', 'Humidity (%)']];
 
 
             for (let i = 0; i < forecastNodes.length; i++) {
