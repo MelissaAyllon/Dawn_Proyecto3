@@ -1,4 +1,3 @@
-import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
@@ -46,13 +45,13 @@ export default function ControlPanel({ setSelectedDate }) {
     const optiones2 = dias.map((item, key) => <MenuItem key={key} value={item}>{item}</MenuItem>);
 
     return (
-        <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
+        <>
             <Typography mb={2} component="h3" variant="h6" color="primary">
                 Pronóstico
             </Typography>
             <Box sx={{ minWidth: 120 }}>
-                <FormControl fullWidth>
-                    <InputLabel id="simple-select-label">Elige día</InputLabel>
+                <FormControl variant="filled" fullWidth>
+                    <InputLabel id="demo-simple-select-filled-label">Elige día</InputLabel>
                     <Select
                         labelId="simple-select-label"
                         id="simple-select"
@@ -65,7 +64,6 @@ export default function ControlPanel({ setSelectedDate }) {
                     </Select>
                 </FormControl>
             </Box>
-            
-        </Paper>
+            </> 
     );
 }

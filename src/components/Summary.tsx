@@ -4,7 +4,8 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import { CardActionArea } from '@mui/material';
 
-import sunrise from '../assets/sunrise.jpeg'
+import sunrise from '../assets/Amanecer.jpg'
+import sunset from '../assets/sunset.jpg'
 
 interface ConfigSunData {
     title?: string;
@@ -14,13 +15,16 @@ interface ConfigSunData {
 
 export default function Summary(data: ConfigSunData) {
     return (
-        <Card sx={{ maxWidth: 345 }}>
+        <Card sx={{
+            p: 2,
+            display: 'flex',
+            flexDirection: 'column'
+          }}>
             <CardActionArea>
                 <CardMedia
                     component="img"
-                    height="140"
-                    image={sunrise}
-                    alt="Amanecer"
+                    height="165"
+                    image={data.title === "Amanecer" ? sunrise : sunset}
                 />
                 <CardContent>
                     <Typography gutterBottom component="h2" variant="h6" color="primary">

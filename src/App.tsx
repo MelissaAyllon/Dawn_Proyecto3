@@ -6,6 +6,7 @@ import BasicTable from './components/BasicTable';
 import WeatherChart from './components/WeatherChart';
 import ControlPanel from './components/ControlPanel';
 import { useEffect, useState } from 'react';
+import Divider from '@mui/material/Divider';
 import './App.css';
 
 function App() {
@@ -126,45 +127,59 @@ function App() {
 
     return (
         <Grid container spacing={5}>
-            <Grid xs={12} sm={12} lg={12} xl={12}>
-                <Typography component="h6" variant="h3" color="white">
-                    Weather App
-                </Typography>
+
+            <Grid xs={12} lg={12}>
+                    <Typography component="h6" variant="h3" color="primary">
+                        WEATHER FORECAST
+                    </Typography>
             </Grid>
 
-            <Grid xs={6} sm={4} md={3} lg={2}>
-                {indicators[0]}
+            <Grid lg={12}>
+                <Divider sx={{ bgcolor: "black" }} />
             </Grid>
 
-            <Grid xs={6} sm={4} md={3} lg={2}>
-                {indicators[1]}
+            <Grid container lg={12}>
+                <Grid lg={6}>
+                    <Typography component="h6" variant="h4" color="black">
+                        GUAYAQUIL
+                    </Typography>
+                </Grid>
+                <Grid lg={6}>
+                    <ControlPanel setSelectedDate={setSelectedDate} />
+                </Grid>
             </Grid>
 
-            <Grid xs={6} sm={4} md={3} lg={2}>
-                {indicators[2]}
+            <Grid xs={12} lg={12}>
+                <WeatherChart selectedDate={selectedDate} />
             </Grid>
 
-            <Grid xs={6} sm={4} md={3} lg={2}>
-                {indicators[3]}
-            </Grid>
-
-            <Grid xs={6} sm={4} md={3} lg={2}>
-                {sunData[0]}
-            </Grid>
-
-            <Grid xs={6} sm={4} md={3} lg={2}>
-                {sunData[1]}
+            <Grid container lg={12}>
+                <Grid container lg={6}>
+                    <Grid lg={12}>
+                        {indicators[0]}
+                    </Grid>
+                    <Grid lg={12}>
+                        {indicators[1]}
+                    </Grid>
+                    <Grid lg={12}>
+                        {indicators[2]}
+                    </Grid>
+                    <Grid lg={12}>
+                        {indicators[3]}
+                    </Grid>
+                </Grid>
+                <Grid lg={6} spacing={9}>
+                    <Grid lg={12}>
+                        {sunData[0]}
+                    </Grid>
+                    <Grid lg={12}>
+                        {sunData[1]}
+                    </Grid>
+                </Grid>
             </Grid>
 
             <BasicTable rows={rowsTable} />
 
-            <Grid xs={12} lg={2}>
-                <ControlPanel setSelectedDate={setSelectedDate} />
-            </Grid>
-
-            <Grid xs={12} lg={10}>
-                <WeatherChart selectedDate={selectedDate} />
-            </Grid>
 
         </Grid>
     );

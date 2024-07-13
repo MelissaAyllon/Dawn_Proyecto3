@@ -46,7 +46,7 @@ function createData(
 
     return (
       <TableContainer component={Paper}>
-        <Table sx={{ minWidth: 650 }} aria-label="simple table">
+        <Table sx={{ minWidth: 650 }} aria-label="customized table">
           <TableHead>
             <TableRow>
               <TableCell>Rango de horas</TableCell>
