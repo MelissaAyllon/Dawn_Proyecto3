@@ -12,6 +12,7 @@ function App() {
     const [indicators, setIndicators] = useState([]);
     const [rowsTable, setRowsTable] = useState([]);
     const [selectedDate, setSelectedDate] = useState('');
+    const [sunData, setSunData] = useState([]);
 
     useEffect(() => {
         (async () => {
@@ -82,6 +83,44 @@ function App() {
             arrayObjects = arrayObjects.slice(0, 8);
 
             setRowsTable(arrayObjects);
+
+            const objectoSun = [];
+            const convertToLocalTime = (isoString: string): string => {
+                const date = new Date(isoString);
+                
+                // Ajusta la hora según la zona horaria de Guayaquil (GMT-5)
+                const offset = -5 * 60 * 60 * 1000; // Calcula el offset en milisegundos
+                const localTime = new Date(date.getTime() + offset); // Aplica el offset para convertir a la hora local de Guayaquil
+
+                // Formatea la hora local según el formato deseado
+                const options: Intl.DateTimeFormatOptions = {
+                    hour: 'numeric',
+                    minute: 'numeric',
+                    second: 'numeric',
+                    hour12: false // Formato de 24 horas
+                };
+
+                return localTime.toLocaleString('en-US', options);
+            };
+
+            //DATA AMANECER
+            const sunrise = xml.getElementsByTagName("sun")[0].getAttribute("rise");
+            const sunriseDate = sunrise.split("T")[0];
+            let sunriseTime = sunrise.split("T")[1];
+            sunriseTime = convertToLocalTime(sunrise);
+            objectoSun.push(["Amanecer", sunriseTime, sunriseDate ]);
+
+            //DATA ATARDECER
+            const sunset = xml.getElementsByTagName("sun")[0].getAttribute("set");
+            const sunsetDate = sunset.split("T")[0];
+            let sunsetTime = sunset.split("T")[1];
+            sunsetTime = convertToLocalTime(sunset);
+            objectoSun.push(["Atardecer", sunsetTime, sunsetDate ]);
+            
+            const sunDataIndicators = Array.from(objectoSun).map(
+                (element) => <Summary title={element[0]} hora={element[1]} fecha={element[2]} />
+            );
+            setSunData(sunDataIndicators);
         })();
     }, []);
 
@@ -109,7 +148,13 @@ function App() {
                 {indicators[3]}
             </Grid>
 
-            <Summary />
+            <Grid xs={6} sm={4} md={3} lg={2}>
+                {sunData[0]}
+            </Grid>
+
+            <Grid xs={6} sm={4} md={3} lg={2}>
+                {sunData[1]}
+            </Grid>
 
             <BasicTable rows={rowsTable} />
 

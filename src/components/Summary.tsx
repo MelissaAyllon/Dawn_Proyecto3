@@ -6,7 +6,13 @@ import { CardActionArea } from '@mui/material';
 
 import sunrise from '../assets/sunrise.jpeg'
 
-export default function Summary() {
+interface ConfigSunData {
+    title?: string;
+    hora?: string;
+    fecha?: string;
+}
+
+export default function Summary(data: ConfigSunData) {
     return (
         <Card sx={{ maxWidth: 345 }}>
             <CardActionArea>
@@ -18,13 +24,13 @@ export default function Summary() {
                 />
                 <CardContent>
                     <Typography gutterBottom component="h2" variant="h6" color="primary">
-                        Amanecer
+                        {data.title}
                     </Typography>
                     <Typography component="p" variant="h4">
-                        05:19:08
+                        {data.hora}
                     </Typography>
                     <Typography color="text.secondary" sx={{ flex: 1 }}>
-                        en 17 Ju    nio, 2024
+                        {data.fecha}
                     </Typography>
                 </CardContent>
             </CardActionArea>
